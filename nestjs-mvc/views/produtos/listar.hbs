@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Produtos</title>
+</head>
+<body>
+    <h1>Lista de Produtos</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Ações</th> <!-- Coluna para as ações -->
+            </tr>
+        </thead>
+        <tbody>
+            {{#each produtos}}
+                <tr>
+                    <td>{{this.id}}</td>
+                    <td>{{this.nome}}</td>
+                    <td>
+                        <!-- Botão de Excluir -->
+                        <form method="DELETE" action="/produtos/excluir/{{this.id}}">
+                            <button type="submit">Excluir</button>
+                        </form>
+                        
+                    </td>
+                </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</body>
+</html>
