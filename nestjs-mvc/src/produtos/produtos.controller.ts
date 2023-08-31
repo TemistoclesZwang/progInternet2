@@ -2,44 +2,55 @@ import { Controller, Get, Post, Body, Patch, Param, Delete, Render, Redirect } f
 import { ProdutosService } from './produtos.service';
 import { CreateProdutoDto } from './dto/create-produto.dto';
 import { UpdateProdutoDto } from './dto/update-produto.dto';
+import { ApiBody, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 
+@ApiTags('produtos') // Título das rotas no Swagger
 @Controller('produtos')
-// .todas as rotas abaixo começam com produtos/
 export class ProdutosController {
   constructor(private readonly produtosService: ProdutosService) {}
-
+  
+  @ApiOperation({ summary: 'Cria um novo produto' }) // Descrição do endpoint
+  @ApiResponse({ status: 200, description: 'Produto criado com sucesso' }) // Descrição da resposta
+  @ApiResponse({
+    status: 400,
+    description: 'Requisição inválida',
+    type: Error, // Exemplo de resposta de erro
+  })
   @Post('salvar')
   @Redirect('/produtos/listar')
-// .redireciona para lista de produtos apos o post
   create(@Body() createProdutoDto: CreateProdutoDto) {
     return this.produtosService.create(createProdutoDto);
   }
 
+  @ApiOperation({ summary: 'Exibe o formulário para criar um novo produto' })
   @Get('novo')
   @Render('produtos/formulario')
   createForm() {
     // Não precisa de código aqui, apenas renderizará a view
   }
 
-  
+  @ApiOperation({ summary: 'Lista todos os produtos' })
   @Get('listar')
-  @Render('produtos/listar') // Renderiza a view 'lista.hbs'
+  @Render('produtos/listar')
   findAll() {
-    const produtos = this.produtosService.findAll(); // Obtenha a lista de produtos do serviço
-    return { produtos }; // Passa a lista de produtos para a view
+    const produtos = this.produtosService.findAll();
+    return { produtos };
   }
 
+  @ApiOperation({ summary: 'Exibe os detalhes de um produto' })
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.produtosService.findOne(id);
   }
 
+  @ApiOperation({ summary: 'Atualiza os detalhes de um produto' })
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateModuleDto: UpdateProdutoDto) {
     return this.produtosService.update(id, updateModuleDto);
   }
 
-  @Delete('excluir/:id')
+  @ApiOperation({ summary: 'Remove um produto' })
+  @Get('excluir/:id')
   @Redirect('/produtos/listar')
   remove(@Param('id') id: string) {
     return this.produtosService.remove(id);
