@@ -2,13 +2,15 @@ import { Controller, Get, Post, Body, Patch, Param, Delete, Render, Redirect } f
 import { ProdutosService } from './produtos.service';
 import { CreateProdutoDto } from './dto/create-produto.dto';
 import { UpdateProdutoDto } from './dto/update-produto.dto';
-
 import { ApiBody, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
-@ApiTags('produtos') // Título das rotas no Swagger
+import { ProdutosRepository } from 'src/repositories/produtos-repository';
+
 @Controller('produtos')
+@ApiTags('produtos') // Título das rotas no Swagger
 export class ProdutosController {
-  constructor(private readonly produtosService: ProdutosService) {}
-  
+  constructor(private readonly produtosService: ProdutosService, 
+    private produtoRepository: ProdutosRepository) { }
+
   @ApiResponse({ status: 200, description: 'Produto criado com sucesso' }) // Descrição da resposta
   @ApiOperation({ summary: 'Cria um novo produto' }) // Descrição do endpoint
   @ApiResponse({
@@ -16,6 +18,17 @@ export class ProdutosController {
     description: 'Requisição inválida',
     type: Error, // Exemplo de resposta de erro
   })
+  
+  @Post('prisma')
+  async getTeste(@Body() body: CreateProdutoDto){
+    const {nome, status} = body
+    await this.produtoRepository.create(nome,status)
+    // .50min = envio de body e dto
+    //.58 min = repository
+    // .1:15 = organização repositories
+  }
+  
+
   @Post('salvar')
   @Redirect('/produtos/listar')
   create(@Body() createProdutoDto: CreateProdutoDto) {
