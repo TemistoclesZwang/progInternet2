@@ -5,7 +5,6 @@ import { PrismaService } from '../database/prisma.service';
 import { ProdutosRepository } from 'src/repositories/produtos-repository';
 import { PrismaProdutos } from 'src/repositories/prisma/prisma-produtos-repository';
 
-
 @Module({
   controllers: [ProdutosController],
   providers: [
@@ -13,8 +12,9 @@ import { PrismaProdutos } from 'src/repositories/prisma/prisma-produtos-reposito
     PrismaService,
     {
       provide: ProdutosRepository,
-      useClass: PrismaProdutos
-    }
+      useClass: PrismaProdutos,
+    },
+    // PrismaProdutos, // Adicione esta linha para incluir PrismaProdutos nos provedores
   ],
 })
 export class ProdutosModule {}

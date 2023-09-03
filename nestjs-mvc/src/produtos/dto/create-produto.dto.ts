@@ -7,7 +7,7 @@ export class CreateProdutoDto {
     @Length(5,32) // . para atender a regra da aplicação no slide de 32 caracters
     nome: string;
 
-    @IsNotEmpty()
-    @IsBoolean()
-    status: boolean;
+    // @IsNotEmpty()
+    // @IsBoolean()
+    // status: boolean;
 }

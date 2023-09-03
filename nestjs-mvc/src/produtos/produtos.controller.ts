@@ -4,6 +4,7 @@ import { CreateProdutoDto } from './dto/create-produto.dto';
 import { UpdateProdutoDto } from './dto/update-produto.dto';
 import { ApiBody, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { ProdutosRepository } from 'src/repositories/produtos-repository';
+import { PrismaProdutos } from 'src/repositories/prisma/prisma-produtos-repository';
 
 @Controller('produtos')
 @ApiTags('produtos') // Título das rotas no Swagger
@@ -19,16 +20,34 @@ export class ProdutosController {
     type: Error, // Exemplo de resposta de erro
   })
   
-  @Post('prisma')
+  @Post('new')
+  @Redirect('/produtos/listar')
   async getTeste(@Body() body: CreateProdutoDto){
-    const {nome, status} = body
-    await this.produtoRepository.create(nome,status)
+    const {nome} = body
+    await this.produtoRepository.create(nome)
     // .50min = envio de body e dto
     //.58 min = repository
     // .1:15 = organização repositories
   }
-  
 
+  @Get('list')
+  @ApiOperation({ summary: 'Lista todos os produtos' })
+  @Render('produtos/listar')
+  async achar() {
+    const produtos = await this.produtoRepository.findAll();
+    return { produtos };
+  }
+
+  // @Delete('excluir/:id')
+  // @ApiOperation({ summary: 'Remove um produto' })
+  // // .não podemos usar @delete pois estamos trabalhando
+  // // .com o formulario html e só aceita get e post
+  // @Redirect('/produtos/listar')
+  // remove(@Param('id') id: string) {
+  //   return this.produtosService.remove(id);
+  // }
+  
+// !antigo
   @Post('salvar')
   @Redirect('/produtos/listar')
   create(@Body() createProdutoDto: CreateProdutoDto) {
