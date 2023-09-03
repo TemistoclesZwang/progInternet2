@@ -10,7 +10,7 @@ export class PrismaProdutos implements ProdutosRepository{
         await this.prisma.produtos.create({
             // .esse produtos é o nome da tabela no prisma schema
             data:{
-                id: uuidv4(),
+                // id: uuidv4(),
                 nome,
                 status,
             }

@@ -11,7 +11,7 @@ datasource db {
 }
 
 model Produtos {
-  id String @id
+  id Int @id @default(autoincrement())
   nome String
   status Boolean
 
