@@ -10,6 +10,7 @@
             <tr>
                 <th>ID</th>
                 <th>Nome</th>
+                <th>Status</th>
                 <th>Ações</th> <!-- Coluna para as ações -->
             </tr>
         </thead>
@@ -18,12 +19,18 @@
                 <tr>
                     <td>{{this.id}}</td>
                     <td>{{this.nome}}</td>
+                    <td>{{this.status}}</td>
                     <td>
                         <!-- Botão de Excluir -->
                         <form method="GET" action="/produtos/excluir/{{this.id}}">
                             <button type="submit">Excluir</button>
                         </form>
                         
+                        <!-- Botão de Atualizar Status -->
+                        <form method="POST" action="/produtos/{{this.id}}">
+                            <input type="hidden" name="_method" value="PATCH"> <!-- Simulando método PATCH usando POST -->
+                            <button type="submit">Alternar Status</button>
+                        </form>
                     </td>
                 </tr>
             {{/each}}

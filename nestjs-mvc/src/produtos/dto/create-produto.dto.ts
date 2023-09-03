@@ -9,4 +9,8 @@ export class CreateProdutoDto {
     @IsNotEmpty()
     @IsString()
     nome: string;
+
+    @IsNotEmpty()
+    @IsString()
+    status: boolean;
 }

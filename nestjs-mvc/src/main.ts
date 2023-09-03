@@ -4,6 +4,7 @@ import { join } from 'path';
 import { AppModule } from './app.module';
 import * as hbs from 'hbs';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
+import { ValidationPipe } from '@nestjs/common';
 
 
 async function bootstrap() {
@@ -25,6 +26,15 @@ async function bootstrap() {
   // Habilitando Templates Base
   hbs.registerPartials(join(__dirname, '..', '/views/partials'));
 
+  app.useGlobalPipes(
+    // .para  validar os campos enviados pela api
+    new ValidationPipe({
+      transform:true,
+      whitelist:true,
+      forbidNonWhitelisted:true,
+    })
+  )
+  
   await app.listen(3000);
-}
+  }
 bootstrap();

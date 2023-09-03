@@ -13,6 +13,7 @@ export class ProdutosService {
     // novoProduto.id = createProdutoDto.id;
     novoProduto.id = uuidv4()
     novoProduto.nome = createProdutoDto.nome;
+    novoProduto.status = true
 
     this.arrayDeProdutos.push(novoProduto); // Adicionar o novo produto ao array
 
