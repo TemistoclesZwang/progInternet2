@@ -1,0 +1,21 @@
+import { Module } from '@nestjs/common';
+import { ProdutosService } from './produtos.service';
+import { ProdutosController } from './produtos.controller';
+import { PrismaService } from '../database/prisma.service';
+import { ProdutosRepository } from 'src/repositories/produtos-repository';
+import { PrismaProdutos } from '../repositories/prisma/prisma-produtos-repository';
+
+
+@Module({
+  controllers: [ProdutosController],
+  providers: [
+    ProdutosService,
+    PrismaService,
+    {
+      provide: ProdutosRepository,
+      useClass: PrismaProdutos,
+    },
+    // PrismaProdutos, // Adicione esta linha para incluir PrismaProdutos nos provedores
+  ],
+})
+export class ProdutosModule {}
