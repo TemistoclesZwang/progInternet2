@@ -36,3 +36,25 @@
         {{/each}}
     </tbody>
 </table>
+
+<script>
+    function excluirProduto(id) {
+        if (confirm(`Tem certeza de que deseja excluir este produto ${id}?`)) {
+            // Enviar uma solicitação DELETE para a rota apropriada
+            fetch(`/produtos/excluir/${id}`, {
+                method: 'GET'
+            })
+                .then(response => {
+                    if (response.ok) {
+                        // Atualizar a página ou executar outra ação após a exclusão bem-sucedida
+                        location.reload();
+                    } else {
+                        console.error('Erro ao excluir o produto');
+                    }
+                })
+                .catch(error => {
+                    console.error('Erro ao excluir o produto:', error);
+                });
+        }
+    }
+</script>
