@@ -5,10 +5,18 @@ import { AppModule } from './app.module';
 import * as hbs from 'hbs';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { ValidationPipe } from '@nestjs/common';
+import { config } from 'dotenv';
 
+config() //.env
+// console.log(process.env);
+// const {USER} = process.env
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
+  await app.listen(process.env.PORT || 2000, '0.0.0.0');
+  // await app.listen(2000);
+
+
   const config = new DocumentBuilder()
     .setTitle('Cats example')
     .setDescription('The cats API description')
@@ -35,6 +43,7 @@ async function bootstrap() {
     })
   )
   
-  await app.listen(2000);
   }
+
+
 bootstrap();
