@@ -3,7 +3,8 @@ import { ProdutosService } from './produtos.service';
 import { ProdutosController } from './produtos.controller';
 import { PrismaService } from '../database/prisma.service';
 import { ProdutosRepository } from 'src/repositories/produtos-repository';
-import { PrismaProdutos } from 'src/repositories/prisma/prisma-produtos-repository';
+import { PrismaProdutos } from '../repositories/prisma/prisma-produtos-repository';
+
 
 @Module({
   controllers: [ProdutosController],

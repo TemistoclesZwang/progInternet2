@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsBoolean, IsNotEmpty, IsString, Length, IsNumber, IsDate, IsPositive, IsNumberString } from 'class-validator';
+import { IsBoolean, IsNotEmpty, IsString, Length, IsNumber, IsDate, IsPositive } from 'class-validator';
 
 export class CreateProdutoDto {
     @ApiProperty({ description: 'Nome do Produto' })
@@ -15,8 +15,8 @@ export class CreateProdutoDto {
 
     @ApiProperty({ description: 'Rentabilidade do Produto' })
     @IsNotEmpty()
-    @IsNumberString()
-    // @IsPositive()
+    @IsNumber()
+    @IsPositive()
     rentabilidade: number;
 
     @ApiProperty({ description: 'Prazo do Produto' })
@@ -24,9 +24,4 @@ export class CreateProdutoDto {
     // @IsDate()
     // !resolver esse tipo no BD
     prazo: Date;
-
-    @ApiProperty({ description: 'Taxa do Produto' })
-    @IsNotEmpty()
-    @IsNumberString()
-    taxaAdministracao: number;
 }

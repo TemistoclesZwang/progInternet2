@@ -9,24 +9,16 @@ export class ProdutosService {
   constructor(private readonly produtosRepository: ProdutosRepository) {}
 
   async create(createProdutoDto: CreateProdutoDto): Promise<void> {
-    const { nome, destinacao, rentabilidade, prazo, taxaAdministracao } = createProdutoDto;
-    await this.produtosRepository.create({
-      nome,
-      destinacao,
-      rentabilidade,
-      prazo,
-      taxaAdministracao
-      // status: true, // Defina o status como true por padrão (disponível)
-    });
+    const { nome, destinacao, rentabilidade, prazo } = createProdutoDto;
+    await this.produtosRepository.create(createProdutoDto);
   }
-  
 
   async findAll(): Promise<Produto[]> {
     return this.produtosRepository.findAll();
   }
 
   async findOne(id: number): Promise<Produto> {
-    return await this.produtosRepository.findOne(id);
+    return this.produtosRepository.findOne(id);
   }
 
   async update(id: number, updateProdutoDto: UpdateProdutoDto): Promise<Produto> {
@@ -34,8 +26,6 @@ export class ProdutosService {
   }
 
   async remove(id: number): Promise<void> {
-    console.log(id);
-    
     return this.produtosRepository.remove(id);
   }
 }

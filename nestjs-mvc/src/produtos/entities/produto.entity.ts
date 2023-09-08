@@ -1,15 +1,19 @@
 export class Produto{
-    id: string
+    // id: string
     nome: string
-    status: boolean
+    // status: boolean
+    destinacao: string
+    rentabilidade: number
+    prazo: Date
+    taxaAdministracao: number
 
-    alternarStatus() {
-        this.status = !this.status;
-    }
+    // alternarStatus() {
+    //     this.status = !this.status;
+    // }
 
-    getStatusTexto(): string {
-        return this.status ? "Disponível" : "Indisponível";
-    }
+    // get statusTexto(): string {
+    //     return this.status ? "Disponível" : "Indisponível";
+    // }
 }
 
 
