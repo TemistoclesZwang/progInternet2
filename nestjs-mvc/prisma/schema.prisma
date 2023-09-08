@@ -14,5 +14,8 @@ model Produtos {
   id Int @id @default(autoincrement())
   nome String
   status Boolean
-
+  destinacao String
+  rentabilidade Float
+  prazo DateTime
+  taxaAdministracao Float
 }

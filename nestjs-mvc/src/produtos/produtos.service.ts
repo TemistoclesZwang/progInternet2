@@ -1,54 +1,41 @@
 import { Injectable } from '@nestjs/common';
+import { ProdutosRepository } from '../repositories/produtos-repository';
 import { CreateProdutoDto } from './dto/create-produto.dto';
 import { UpdateProdutoDto } from './dto/update-produto.dto';
 import { Produto } from './entities/produto.entity';
-import { v4 as uuidv4 } from 'uuid';
 
 @Injectable()
 export class ProdutosService {
-  public arrayDeProdutos: Produto[] = []; // Array para armazenar os produtos
+  constructor(private readonly produtosRepository: ProdutosRepository) {}
 
-  create(createProdutoDto: CreateProdutoDto): Produto {
-    const novoProduto = new Produto(); // Criar uma nova instância de Produto
-    // novoProduto.id = createProdutoDto.id;
-    novoProduto.id = uuidv4()
-    novoProduto.nome = createProdutoDto.nome;
-    novoProduto.status = true
+  async create(createProdutoDto: CreateProdutoDto): Promise<void> {
+    const { nome, destinacao, rentabilidade, prazo, taxaAdministracao } = createProdutoDto;
+    await this.produtosRepository.create({
+      nome,
+      destinacao,
+      rentabilidade,
+      prazo,
+      taxaAdministracao
+      // status: true, // Defina o status como true por padrão (disponível)
+    });
+  }
+  
 
-    this.arrayDeProdutos.push(novoProduto); // Adicionar o novo produto ao array
-
-    return novoProduto; // Retornar o novo produto criado
+  async findAll(): Promise<Produto[]> {
+    return this.produtosRepository.findAll();
   }
 
-  findAll(): Produto[] {
-    return this.arrayDeProdutos; // Retornar todos os produtos
+  async findOne(id: number): Promise<Produto> {
+    return await this.produtosRepository.findOne(id);
   }
 
-  findOne(id: string): Produto {
-    return this.arrayDeProdutos.find(produto => produto.id === id); // Encontrar o produto pelo ID
+  async update(id: number, updateProdutoDto: UpdateProdutoDto): Promise<Produto> {
+    return this.produtosRepository.update(id, updateProdutoDto);
   }
 
-  update(id: string, updateProdutoDto: UpdateProdutoDto): Produto {
-    const produto = this.findOne(id); // Encontrar o produto pelo ID
-
-    if (produto) {
-      // Atualizar os campos do produto
-      produto.id = updateProdutoDto.id;
-      produto.nome = updateProdutoDto.nome;
-    }
-
-    return produto; // Retornar o produto atualizado
-  }
-
-  remove(id: string): Produto {
-    const index = this.arrayDeProdutos.findIndex(produto => produto.id === id); // Encontrar o índice do produto
-
-    if (index !== -1) {
-      const produtoRemovido = this.arrayDeProdutos.splice(index, 1)[0]; // Remover o produto do array
-      return produtoRemovido; // Retornar o produto removido
-    }
+  async remove(id: number): Promise<void> {
+    console.log(id);
     
-
-    return null; // Retornar null se o produto não foi encontrado
+    return this.produtosRepository.remove(id);
   }
 }

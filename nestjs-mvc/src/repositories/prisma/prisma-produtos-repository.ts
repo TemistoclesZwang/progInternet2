@@ -1,34 +1,62 @@
-import { Injectable } from "@nestjs/common";
-import { v4 as uuidv4 } from 'uuid';
+import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/database/prisma.service';
-import { ProdutosRepository } from "../produtos-repository";
-import { Produto } from "src/produtos/entities/produto.entity";
+import { ProdutosRepository } from '../produtos-repository';
+import { CreateProdutoDto } from 'src/produtos/dto/create-produto.dto';
+import { UpdateProdutoDto } from 'src/produtos/dto/update-produto.dto';
+import { Produto } from 'src/produtos/entities/produto.entity';
 
 @Injectable()
-export class PrismaProdutos implements ProdutosRepository{
-    constructor (private prisma: PrismaService){}
-    
-    async create (nome: string): Promise<void>{
+export class PrismaProdutos implements ProdutosRepository {
+    produtosRepository: any;
+    constructor(private readonly prisma: PrismaService) { }
+
+    async create(createProdutoDto: CreateProdutoDto): Promise<void> {
+        const { nome, destinacao, rentabilidade,prazo, taxaAdministracao } = createProdutoDto;
+        const status = true
         await this.prisma.produtos.create({
-            // .esse produtos é o nome da tabela no prisma schema
-            data:{
-                // id: uuidv4(),
+            data: {
                 nome,
-                status: true,
-            }
-        })
+                status,
+                destinacao,
+                rentabilidade,
+                prazo,
+                taxaAdministracao,
+            },
+        });
     }
 
     async findAll(): Promise<Produto[]> {
-        const prismaProdutos = await this.prisma.produtos.findMany();
-        
-        // Mapear os resultados do Prisma para o tipo Produto
-        return prismaProdutos.map((prismaProduto) => {
-            const produto = new Produto();
-            produto.id = prismaProduto.id.toString();
-            produto.nome = prismaProduto.nome;
-            produto.status = prismaProduto.status;
-            return produto;
+        return this.prisma.produtos.findMany();
+    }
+
+    async findOne(id: number): Promise<Produto> {
+        return await this.prisma.produtos.findUnique({
+            where: {
+                id,
+            },
+        });
+    }
+
+    async update(id: number, updateProdutoDto: UpdateProdutoDto): Promise<Produto> {
+        const { nome, destinacao, rentabilidade, prazo } = updateProdutoDto;
+        return this.prisma.produtos.update({
+            where: {
+                id,
+            },
+            data: {
+                nome,
+                destinacao,
+                rentabilidade,
+                prazo,
+            },
+        });
+    }
+
+    async remove(id: number): Promise<void> {
+        await this.prisma.produtos.delete({
+            where: {
+                id,
+            },
         });
     }
 }
