@@ -29,21 +29,6 @@ export class PrismaPessoas implements PessoasRepository {
             },
         });
     }
-    async findAll(): Promise<Pessoa[]> {
-        const pessoas = await this.prisma.pessoas.findMany({
-            include:{
-                stack: true,
-            }
-        });
-    
-        return pessoas.map(pessoa => {
-            return {
-                ...pessoa,
-                stack: pessoa.stack.map(item => item.stackNome) // Mapeia apenas o nome da stack
-            };
-        });
-    }
-    
 
     async findOne(id: string): Promise<Pessoa> {
         return this.prisma.pessoas.findUnique({
@@ -99,27 +84,4 @@ export class PrismaPessoas implements PessoasRepository {
         return this.prisma.pessoas.count();
     }
     
-
-    // async update(id: string, updatePessoaDto: UpdatePessoaDto): Promise<Pessoa> {
-    //     const { nome, apelido, nascimento, stack } = updatePessoaDto;
-    //     return this.prisma.pessoas.update({
-    //         where: {
-    //             id,
-    //         },
-    //         data: {
-    //             nome,
-    //             apelido,
-    //             nascimento,
-    //             stack,
-    //         },
-    //     });
-    // }
-
-    async remove(id: string): Promise<void> {
-        await this.prisma.pessoas.delete({
-            where: {
-                id,
-            },
-        });
-    }
 }

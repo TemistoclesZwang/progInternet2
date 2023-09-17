@@ -29,14 +29,6 @@ export class PessoasController {
     return await this.pessoasService.findOne(id);
   }
 
-  @Get('lista')
-  @ApiOperation({ summary: 'Lista todos os pessoas' })
-  @ApiResponse({ status: 200, description: 'Lista de pessoas retornada com sucesso' })
-  
-  async findAll() {
-    return await this.pessoasService.findAll();
-  }
-
   @Get('pessoas?:t')
   @ApiOperation({ summary: 'Retorna um pessoa pelo ID' })
   @ApiResponse({ status: 200, description: 'Pessoa retornado com sucesso' })

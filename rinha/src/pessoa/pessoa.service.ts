@@ -14,10 +14,6 @@ export class PessoasService {
     await this.pessoasRepository.create(createPessoaDto);
   }
 
-  async findAll(): Promise<Pessoa[]> {
-    return this.pessoasRepository.findAll();
-  }
-
   async findOne(id: string): Promise<Pessoa> {
     return this.pessoasRepository.findOne(id);
   }
@@ -28,13 +24,5 @@ export class PessoasService {
 
   async count(): Promise<number> {
     return this.pessoasRepository.count();
-  }
-
-  // async update(id: string, updatePessoaDto: UpdatePessoaDto): Promise<Pessoa> {
-  //   return this.pessoasRepository.update(id, updatePessoaDto);
-  // }
-
-  async remove(id: string): Promise<void> {
-    return this.pessoasRepository.remove(id);
   }
 }
