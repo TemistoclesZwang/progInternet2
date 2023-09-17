@@ -1,4 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { ArrayNotEmpty } from 'src/decorators/array-not-empty.decorator';
+import { IsArrayOfStrings } from 'src/decorators/array-is-string.decorator';
 import { IsBoolean, IsNotEmpty, IsString, Length, IsNumber, IsDate, IsPositive } from 'class-validator';
 
 export class CreatePessoaDto {
@@ -6,6 +8,7 @@ export class CreatePessoaDto {
     @IsNotEmpty()
     @IsString()
     @Length(1, 100) 
+    // @IsUnique()
     nome: string;
 
     @ApiProperty({ description: 'Apelido da Pessoa até 32 chars' })
@@ -19,17 +22,12 @@ export class CreatePessoaDto {
     @IsString()
     nascimento: string;
 
-    // @ArrayNotEmpty
+    @ArrayNotEmpty()
+    @IsArrayOfStrings()
     @ApiProperty({ description: 'Stack profissional da pessoa' })
     @IsNotEmpty()
-    // stack: string[] = [];
-    stack: string;
+    stack: string[] = [];
 }
-// function ArrayNotEmpty(target: CreatePessoaDto, propertyKey: 'stack'): void {
-//     throw new Error('Function not implemented.');
-// }
 
-// function IsUnique(): (target: CreatePessoaDto, propertyKey: "id") => void {
-//     throw new Error('Function not implemented.');
-// }
+
 

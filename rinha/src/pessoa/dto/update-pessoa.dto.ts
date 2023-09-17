@@ -13,7 +13,7 @@ export class UpdatePessoaDto extends PartialType(CreatePessoaDto) {
     @IsPositive()
     nascimento?: string;
     
-    @IsString()
-    stack?: string;
+    // @IsString()
+    // stack?: string;
     // stack?: string[];
 }

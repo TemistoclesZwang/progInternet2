@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { PessoasRepository } from '../repositories/pessoas-repository';
 import { CreatePessoaDto } from './dto/create-pessoa.dto';
 import { UpdatePessoaDto } from './dto/update-pessoa.dto';
+// import { TermoPessoaDto } from './dto/termo-pessoa.dto';
 import { Pessoa } from './entities/pessoa.entity';
 
 @Injectable()
@@ -21,7 +22,7 @@ export class PessoasService {
     return this.pessoasRepository.findOne(id);
   }
 
-  async findTerm(termo: string): Promise<Pessoa[]> {
+  async findTerm(termo:string): Promise<Pessoa[]> {
     return this.pessoasRepository.findTerm(termo);
   }
 
@@ -29,9 +30,9 @@ export class PessoasService {
     return this.pessoasRepository.count();
   }
 
-  async update(id: string, updatePessoaDto: UpdatePessoaDto): Promise<Pessoa> {
-    return this.pessoasRepository.update(id, updatePessoaDto);
-  }
+  // async update(id: string, updatePessoaDto: UpdatePessoaDto): Promise<Pessoa> {
+  //   return this.pessoasRepository.update(id, updatePessoaDto);
+  // }
 
   async remove(id: string): Promise<void> {
     return this.pessoasRepository.remove(id);

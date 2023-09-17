@@ -15,13 +15,18 @@ model Pessoas {
   nome String
   apelido String
   nascimento String
-  stack String
-  // stack Stack[]
+  // stack String
+  stack Stacks[]
+  // .relacao de 1 para muitos
+  // . uma pessoa pode ter várias stacks
 
 }
 
-// model Stack {
-//   id Int @id @default(autoincrement())
-//   nome String
-//   // Outros campos relacionados à stack
-// }
+model Stacks {
+  id Int @id @default(autoincrement())
+  stackNome String
+  pessoaId String // indicar a relação
+  pessoa Pessoas @relation(fields: [pessoaId], references: [id]) // Define a relação entre Stack e Pessoas
+}
+
+

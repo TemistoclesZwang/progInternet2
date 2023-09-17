@@ -1,4 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { Stack } from './stack.entity';
 
 export class Pessoa {
     @ApiProperty()
@@ -14,7 +15,5 @@ export class Pessoa {
     nascimento: string;
 
     @ApiProperty()
-    // stack: string[] = [];
-    stack: string;
-
+    stack: Stack[] | string[] = []; //transformando`stack` em uma coleção de objetos Stack
 }
