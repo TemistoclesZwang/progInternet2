@@ -21,6 +21,14 @@ export class PessoasService {
     return this.pessoasRepository.findOne(id);
   }
 
+  async findTerm(termo: string): Promise<Pessoa[]> {
+    return this.pessoasRepository.findTerm(termo);
+  }
+
+  async count(): Promise<number> {
+    return this.pessoasRepository.count();
+  }
+
   async update(id: string, updatePessoaDto: UpdatePessoaDto): Promise<Pessoa> {
     return this.pessoasRepository.update(id, updatePessoaDto);
   }

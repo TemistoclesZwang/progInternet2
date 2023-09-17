@@ -14,5 +14,6 @@ export class UpdatePessoaDto extends PartialType(CreatePessoaDto) {
     nascimento?: string;
     
     @IsString()
-    stack?: string[];
+    stack?: string;
+    // stack?: string[];
 }

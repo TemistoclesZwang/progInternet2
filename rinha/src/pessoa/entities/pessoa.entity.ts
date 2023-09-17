@@ -14,5 +14,7 @@ export class Pessoa {
     nascimento: string;
 
     @ApiProperty()
-    stack: string[] = [];
+    // stack: string[] = [];
+    stack: string;
+
 }

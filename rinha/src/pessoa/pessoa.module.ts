@@ -1,9 +1,21 @@
 import { Module } from '@nestjs/common';
-import { PessoaService } from './pessoa.service';
-import { PessoaController } from './pessoa.controller';
+import { PessoasService } from './pessoa.service';
+import { PessoasController } from './pessoa.controller';
+import { PrismaService } from '../database/prisma.service';
+import { PessoasRepository } from 'src/repositories/pessoas-repository';
+import { PrismaPessoas } from 'src/repositories/prisma/prisma-pessoas-repository';
+
 
 @Module({
-  controllers: [PessoaController],
-  providers: [PessoaService],
+  controllers: [PessoasController],
+  providers: [
+    PessoasService,
+    PrismaService,
+    {
+      provide: PessoasRepository,
+      useClass: PrismaPessoas,
+    },
+    // PrismaPessoas, // Adicione esta linha para incluir PrismaPessoas nos provedores
+  ],
 })
-export class PessoaModule {}
+export class PessoasModule {}
