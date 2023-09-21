@@ -1,35 +1,56 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useState } from 'react';
 import './App.css'
+// import { DefaultButton } from './components/DefaultButton'
+import { DefaultRectangle } from './components/DefaultRectangle'
+import { Milhas } from './components/Milhas'
+import { BonusButtonRow } from './components/BonusButtonRow';
+import { BonusButtonPlusMin } from './components/BonusButtonPlusMin';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [valorMilhas, setValorMilhas] = useState(0);
+  // const [valorBonus, setValorBonus] = useState(0);
+
+  const atualizarValorMilhas = (novoValor: number) => {
+    setValorMilhas(novoValor);
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <main>
+      <p>Milhas</p>
+      <div className='milhas'>
+        <DefaultRectangle exibirBordas={false}>
+          <Milhas valorMilhas={valorMilhas} atualizarValorMilhas={atualizarValorMilhas} />
+        </DefaultRectangle>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+      <p>Preço milheiro</p>
+      <div className='precoMilheiro'>
+        <DefaultRectangle exibirBordas={true} heightVariant='little'>
+          <p>R$ 70,00</p>
+        </DefaultRectangle>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+      <p>Bônus</p>
+      <div className='bonus'>
+        <DefaultRectangle exibirBordas={true} heightVariant='little'>
+          <BonusButtonPlusMin valorBonus={0}></BonusButtonPlusMin>
+        </DefaultRectangle>
+        <DefaultRectangle exibirBordas={false} heightVariant='little'>
+          <BonusButtonRow valorMilhas={valorMilhas} atualizarValorMilhas={atualizarValorMilhas} />
+        </DefaultRectangle>
+      </div>
+      <div className='rgb'>
+        <DefaultRectangle exibirBordas={true}>
+          </DefaultRectangle>
+      </div>
+      <div className='precoUnidadeMilheiro'>
+        <DefaultRectangle exibirBordas={true} heightVariant='little'>
+          </DefaultRectangle>
+      </div>
+      <div className='resumoFinal'>
+        <DefaultRectangle exibirBordas={true}>
+          </DefaultRectangle>
+      </div>
+    </main>
+  );
 }
 
-export default App
+export default App;
