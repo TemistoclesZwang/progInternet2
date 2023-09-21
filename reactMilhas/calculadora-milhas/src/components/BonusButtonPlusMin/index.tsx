@@ -10,13 +10,17 @@ export const BonusButtonPlusMin: React.FC<BonusButtonPlusMinProps> = ({ valorBon
     const [porcentagem, setPorcentagem] = useState(valorBonus);
 
     const diminuirPorcentagem = () => {
-        setPorcentagem(porcentagem - 1);
-        atualizarValorMilhas(valorMilhas - 1000);
+        if (valorMilhas > 0) {
+            setPorcentagem(porcentagem - 1);
+            atualizarValorMilhas(valorMilhas - 1000);
+        }
     };
 
     const aumentarPorcentagem = () => {
-        setPorcentagem(porcentagem + 1);
-        atualizarValorMilhas(valorMilhas + 1000);
+        if (valorMilhas > 0) {
+            setPorcentagem(porcentagem + 1);
+            atualizarValorMilhas(valorMilhas + 1000);
+        }
     };
 
     return (
