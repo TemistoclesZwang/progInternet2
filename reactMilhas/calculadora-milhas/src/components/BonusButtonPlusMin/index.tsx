@@ -2,17 +2,21 @@ import React, { useState } from 'react';
 
 interface BonusButtonPlusMinProps {
     valorBonus: number;
+    valorMilhas: number;
+    atualizarValorMilhas: (novoValor: number) => void;
 }
 
-export const BonusButtonPlusMin: React.FC<BonusButtonPlusMinProps> = ({ valorBonus }) => {
+export const BonusButtonPlusMin: React.FC<BonusButtonPlusMinProps> = ({ valorBonus, valorMilhas, atualizarValorMilhas }) => {
     const [porcentagem, setPorcentagem] = useState(valorBonus);
 
     const diminuirPorcentagem = () => {
         setPorcentagem(porcentagem - 1);
+        atualizarValorMilhas(valorMilhas - 1000);
     };
 
     const aumentarPorcentagem = () => {
         setPorcentagem(porcentagem + 1);
+        atualizarValorMilhas(valorMilhas + 1000);
     };
 
     return (
@@ -23,4 +27,3 @@ export const BonusButtonPlusMin: React.FC<BonusButtonPlusMinProps> = ({ valorBon
         </div>
     );
 };
-

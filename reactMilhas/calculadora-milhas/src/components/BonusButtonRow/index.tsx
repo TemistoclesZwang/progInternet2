@@ -1,5 +1,4 @@
 import React from 'react';
-import './index.css'; // Certifique-se de criar um arquivo CSS para os estilos
 
 interface BonusProps {
     valorMilhas: number;

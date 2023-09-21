@@ -1,6 +1,5 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import './App.css'
-// import { DefaultButton } from './components/DefaultButton'
 import { DefaultRectangle } from './components/DefaultRectangle'
 import { Milhas } from './components/Milhas'
 import { BonusButtonRow } from './components/BonusButtonRow';
@@ -8,7 +7,6 @@ import { BonusButtonPlusMin } from './components/BonusButtonPlusMin';
 
 function App() {
   const [valorMilhas, setValorMilhas] = useState(0);
-  // const [valorBonus, setValorBonus] = useState(0);
 
   const atualizarValorMilhas = (novoValor: number) => {
     setValorMilhas(novoValor);
@@ -31,7 +29,7 @@ function App() {
       <p>Bônus</p>
       <div className='bonus'>
         <DefaultRectangle exibirBordas={true} heightVariant='little'>
-          <BonusButtonPlusMin valorBonus={0}></BonusButtonPlusMin>
+          <BonusButtonPlusMin valorBonus={0} valorMilhas={valorMilhas} atualizarValorMilhas={atualizarValorMilhas} />
         </DefaultRectangle>
         <DefaultRectangle exibirBordas={false} heightVariant='little'>
           <BonusButtonRow valorMilhas={valorMilhas} atualizarValorMilhas={atualizarValorMilhas} />
@@ -39,15 +37,15 @@ function App() {
       </div>
       <div className='rgb'>
         <DefaultRectangle exibirBordas={true}>
-          </DefaultRectangle>
+        </DefaultRectangle>
       </div>
       <div className='precoUnidadeMilheiro'>
         <DefaultRectangle exibirBordas={true} heightVariant='little'>
-          </DefaultRectangle>
+        </DefaultRectangle>
       </div>
       <div className='resumoFinal'>
         <DefaultRectangle exibirBordas={true}>
-          </DefaultRectangle>
+        </DefaultRectangle>
       </div>
     </main>
   );
