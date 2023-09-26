@@ -15,11 +15,11 @@ function App() {
     };
 
     return (
-        <div>
+        <>
             <h1>Lista de Tópicos</h1>
             <NewTopic onAddTopic={handleAddTask} />
             <TopicList topics={topics} />
-        </div>
+        </>
     );
 }
 
