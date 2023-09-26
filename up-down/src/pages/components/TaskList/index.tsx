@@ -1,20 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Topic } from '../NewTopic';
 import { ButtonUpDown } from '../ButtonUpDown';
+import { TotalVotes } from '../TotalVotes';
 
 interface TopicListProps {
     topics: Topic[];
 }
 
 export function TopicList({ topics }: TopicListProps) {
+    const [votes, setVotes] = useState<{ [id: string]: { up: number; down: number } }>({});
 
     const handleUpVote = (id: string) => {
-        alert(`Upvote para o tópico ${id}`);
+        setVotes((prevVotes) => ({
+            ...prevVotes,
+            [id]: {
+                up: (prevVotes[id]?.up || 0) + 1,
+                down: prevVotes[id]?.down || 0,
+            },
+        }));
     };
 
     const handleDownVote = (id: string) => {
-        alert(`Downvote para o tópico ${id}`);
+        setVotes((prevVotes) => ({
+            ...prevVotes,
+            [id]: {
+                up: prevVotes[id]?.up || 0,
+                down: (prevVotes[id]?.down || 0) + 1,
+            },
+        }));
     };
+
+
 
     return (
         <>
@@ -26,7 +42,12 @@ export function TopicList({ topics }: TopicListProps) {
                             onUpClick={() => handleUpVote(topic.id)}
                             onDownClick={() => handleDownVote(topic.id)}
                         />
-                        <p>contabilizar os votos aqui</p>
+                        {votes[topic.id] && (
+                            <TotalVotes
+                                totalUp={votes[topic.id].up}
+                                totalDown={votes[topic.id].down}
+                            />
+                        )}
                     </div>
                 ))}
             </div>
