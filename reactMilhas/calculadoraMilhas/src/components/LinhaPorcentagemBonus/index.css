@@ -1,0 +1,17 @@
+.centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button {
+    margin: 5px;
+    padding: 5px 15px;
+    border-radius: 20px;
+}
+
+.classBonus button.selected {
+    background-color: #007BFF;
+    color: #FFFFFF;
+    cursor: default;
+}
