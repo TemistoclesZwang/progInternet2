@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Topic } from '../NewTopic';
 import { ButtonUpDown } from '../ButtonUpDown';
 import { TotalVotes } from '../TotalVotes';
