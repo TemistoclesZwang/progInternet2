@@ -1,3 +1,6 @@
+.mostrarVotos{
+    background-color: var(--azul);
+}
 .progressBar {
     position: relative;
     height: 15px;
@@ -9,7 +12,7 @@
 .upBar {
     position: absolute;
     height: 100%;
-    background-color: #62e366;
+    background-color: var(--verde);
     border-radius: 5px;
     text-align: center;
     /* line-height: 30px; */
@@ -21,7 +24,7 @@
 .downBar {
     position: absolute;
     height: 100%;
-    background-color: #ce8787;
+    background-color: var(--vermelho);
     border-radius: 5px;
     text-align: center;
     /* line-height: 30px; */

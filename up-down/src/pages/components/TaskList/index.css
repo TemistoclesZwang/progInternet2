@@ -1,0 +1,4 @@
+.descriptionTxt,.autorTxt{
+    display: flex;
+    justify-content: flex-start;
+}

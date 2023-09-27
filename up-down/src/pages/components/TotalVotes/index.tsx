@@ -18,7 +18,7 @@ export function TotalVotes({ totalUp, totalDown }: TotalVotesProps) {
 
     return (
         <div>
-            <button onClick={handleShowVotes}>Mostrar Votos</button>
+            <button className="mostrarVotos" onClick={handleShowVotes}>Mostrar Votos</button>
             {showVotes && (
                 <>
                     <p>Upvotes: {totalUp} Downvotes: {totalDown} Total: {totalVotes}</p>

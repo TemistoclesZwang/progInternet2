@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Topic } from '../NewTopic';
 import { ButtonUpDown } from '../ButtonUpDown';
 import { TotalVotes } from '../TotalVotes';
+import './index.css'
 
 interface TopicListProps {
     topics: Topic[];
@@ -37,7 +38,10 @@ export function TopicList({ topics }: TopicListProps) {
             <div className="cardTopicList">
                 {topics.map((topic) => (
                     <div key={topic.id} className="card">
-                        {topic.id}
+                        <div className='containerTxt'>
+                        <p className='descriptionTxt'>Descrição:{topic.description}</p>
+                        <p className='autorTxt'>Autor:{topic.autor}</p>
+                        </div>
                         <ButtonUpDown
                             onUpClick={() => handleUpVote(topic.id)}
                             onDownClick={() => handleDownVote(topic.id)}

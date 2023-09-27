@@ -1,0 +1,65 @@
+/*. resetando todas configurações padrões do navegador */
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+/*. todas as cores utilizadas no projeto */
+html {
+    --black: #0D114F;
+    --azul: #7d8aef;
+    --verde: #31c491;
+    --rosa: #fca2fc;
+    --vermelho: #fd0505;
+    --roxo: #c7cbfc;
+
+
+    --grey-dark: #4D5E77;
+    --grey-blue: #A1B2CD;
+    --grey-light: #E5EAF1;
+    --grey-medium: #eaecf2;
+
+    /* 1rem = 16px (User Agent) = 100% (User Agent) */
+    font-size: 62.5%
+        /* 10px */
+        /*. para conseguir converter facilmente PX em REM com a virgula */
+        /*.exemplo: 8px = 0.8rem, 16px = 1.6rem, 120px = 12,0rem */
+        /*. isso é necessário pois PX é estático REM é dinâmico, muda com o tamanho da tela */
+}
+
+body {
+    /* display: flex; */
+    height: 100vh;
+    background: var(--background);
+    /*. usando var de cor */
+}
+
+body,
+button,
+input,
+textarea {
+    /* intervalo de tamanho */
+    font-size: clamp(14px, 1.6rem, 2vw);
+    border-radius: 2.5rem;
+    padding: .8rem;
+    /*. clamp = setar tamanho minimo, normal e máximo */
+    /*. perceba que é o clamp somente de body,button, input e textare */
+    /*. na menor tela a fonte terá 14px */
+    /*. o padrão sera 1.6rem */
+    /*. o maximo será 2vw */
+
+    font-family: 'Open Sans', sans-serif;
+    /* font-family: 'Poppins', sans-serif; */
+}
+
+/*.desabilitar cores padroes de links azuis  */
+a,
+a:hover,
+a:focus,
+a:active {
+    text-decoration: none;
+    color: inherit;
+}

@@ -1,4 +1,6 @@
 import React from 'react';
+import './index.css'
+
 
 interface ButtonUpDownProps {
     onUpClick: () => void;
@@ -7,9 +9,9 @@ interface ButtonUpDownProps {
 
 export function ButtonUpDown({ onUpClick, onDownClick }: ButtonUpDownProps) {
     return (
-        <>
-            <button onClick={onUpClick}>/\ up</button>
-            <button onClick={onDownClick}>\/ down</button>
-        </>
+        <div className='containerUpDownButton'>
+            <button className='upButton' onClick={onUpClick}>/\ up</button>
+            <button className='downButton' onClick={onDownClick}>\/ down</button>
+        </div>
     );
 }

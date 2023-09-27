@@ -1,4 +1,5 @@
 import { useState } from "react"
+import './index.css'
 
 interface NewTopicProps {
     onAddTopic: (newTopic: Topic) => void;
@@ -73,7 +74,7 @@ export function NewTopic({ onAddTopic }: NewTopicProps) {
                     onChange={handleInputChange}
                     placeholder="Tags"
                 />
-                <input type="submit" value={"Adicionar"} />
+                <input className="adicionar" type="submit" value={"Adicionar"} />
             </form>
         </>
     )

@@ -1,0 +1,14 @@
+form{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 0 auto;
+    gap:1.5rem;
+    background-color: var(--roxo);
+    border-radius: 1.5rem;
+    padding: 2rem;
+    max-width: 100rem;
+}
+.adicionar{
+    background-color: var(--rosa);
+}
