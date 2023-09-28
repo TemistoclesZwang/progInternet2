@@ -1,9 +1,7 @@
-import { useState } from 'react'
-import './App.css'
-import { NewTopic } from './pages/components/NewTopic'
-import { Topic } from './pages/components/NewTopic'
-import { TopicList } from './pages/components/TaskList'
-
+import { useState} from 'react';
+import './App.css';
+import { NewTopic, Topic } from './pages/components/NewTopic';
+import { TopicList } from './pages/components/TaskList';
 
 function App() {
     const [topics, setTopics] = useState<Topic[]>([]);
@@ -16,10 +14,9 @@ function App() {
         <main className='container'>
             <h1>Lista de Tópicos</h1>
             <NewTopic onAddTopic={handleAddTask} />
-            <TopicList topics={topics} />
+            <TopicList />
         </main>
     );
 }
 
-
-export default App
+export default App;

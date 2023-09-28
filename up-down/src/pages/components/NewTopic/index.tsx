@@ -54,6 +54,22 @@ export function NewTopic({ onAddTopic }: NewTopicProps) {
                 created_at: new Date(),
                 tags: tags
             };
+
+            fetch('http://localhost:3000/topics', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(newTopic)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Novo tópico criado:', data);
+            })
+            .catch(error => {
+                console.error('Erro ao criar novo tópico:', error);
+            });
+
             onAddTopic(newTopic);
             setAutor({ nome: '', cidade: '', pais: '' });
             setDescription('');
