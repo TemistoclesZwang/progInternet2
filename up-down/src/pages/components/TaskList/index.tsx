@@ -1,14 +1,14 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 import { Topic } from '../NewTopic';
 import { ButtonUpDown } from '../ButtonUpDown';
 import { TotalVotes } from '../TotalVotes';
 import './index.css'
+import { useState, useEffect } from 'react';
+import './index.css';
 
-interface TopicListProps {
-    topics: Topic[];
-}
 
-export function TopicList({ topics }: TopicListProps) {
+export function TopicList() {
+    const [topics, setTopics] = useState<Topic[]>([]);
     const [votes, setVotes] = useState<{ [id: string]: { up: number; down: number } }>({});
 
     const handleUpVote = (id: string) => {
@@ -31,25 +31,37 @@ export function TopicList({ topics }: TopicListProps) {
         }));
     };
 
+    useEffect(() => {
+        fetch('http://localhost:3000/topics')
+            .then((response) => response.json())
+            .then((data) => {
+                // console.log(data.topics);
+                
+                setTopics(data|| []); // Adicionamos uma verificação para caso topics seja undefined
+            })
+            .catch((error) => {
+                console.error('Erro ao obter os tópicos:', error);
+            });
+    }, []); // Executa apenas uma vez ao montar o componente
+
     return (
         <>
             <div className="cardTopicList">
-                {topics.map((topic) => (
+                {topics && topics.map((topic) => ( // Verificamos se topics existe antes de chamar map
                     <div key={topic.id} className="card">
-                        <div className='containerTxt'>
-                            <p className='descriptionTxt'>Descrição:<span className="boldTxt">{topic.description}</span></p>
-                            <p className='autorTxt'>Autor:{topic.autor.nome}</p>
-                            <p className='dataTxt'>Data:{topic.created_at.toLocaleString()}</p>
+                        <div className="containerTxt">
+                            <p className="descriptionTxt">
+                                Descrição:<span className="boldTxt">{topic.description}</span>
+                            </p>
+                            <p className="autorTxt">Autor:{topic.autor.nome}</p>
+                            <p className="dataTxt">Data:{new Date(topic.created_at).toLocaleString()}</p>
                         </div>
                         <ButtonUpDown
                             onUpClick={() => handleUpVote(topic.id)}
                             onDownClick={() => handleDownVote(topic.id)}
                         />
                         {votes[topic.id] && (
-                            <TotalVotes
-                                totalUp={votes[topic.id].up}
-                                totalDown={votes[topic.id].down}
-                            />
+                            <TotalVotes totalUp={votes[topic.id].up} totalDown={votes[topic.id].down} />
                         )}
                     </div>
                 ))}
