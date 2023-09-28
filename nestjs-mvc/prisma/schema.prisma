@@ -8,6 +8,7 @@ generator client {
 datasource db {
   provider = "sqlite"
   url      = env("DATABASE_URL")
+  // .é necessário criar o .env apontando com a var DATABASE_URL="file:./migrations/dev.db"
 }
 
 model Produtos {

@@ -1,0 +1,42 @@
+.classMilhas {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.decreaseByThousand {
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    padding: 5px 10px;
+    margin: 5px;
+}
+
+.increaseByThousand {
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    padding: 5px 10px;
+    margin: 5px;
+}
+
+.increaseByTenThousand {
+    border: 1px solid #ccc;
+    border-radius: 30px;
+    padding: 15px 10px;
+    margin: 5px;
+}
+
+.decreaseByTenThousand {
+    border: 1px solid #ccc;
+    border-radius: 30px;
+    padding: 15px 10px;
+    margin: 5px;
+}
+
+.counterRectangle {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 5px 10px;
+    margin: 5px;
+    width: 50px;
+    text-align: center;
+}

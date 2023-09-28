@@ -1,0 +1,34 @@
+.mostrarVotos{
+    background-color: var(--rosa);
+}
+.progressBar {
+    position: relative;
+    height: 15px;
+    background-color: #f3f3f3;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.upBar {
+    position: absolute;
+    height: 100%;
+    background-color: var(--verde);
+    border-radius: 5px;
+    text-align: center;
+    /* line-height: 30px; */
+    color: white;
+    font-weight: bold;
+    left: 0;
+}
+
+.downBar {
+    position: absolute;
+    height: 100%;
+    background-color: var(--vermelho);
+    border-radius: 5px;
+    text-align: center;
+    /* line-height: 30px; */
+    color: white;
+    font-weight: bold;
+    right: 0;
+}

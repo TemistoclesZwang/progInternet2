@@ -1,0 +1,23 @@
+.sectionContainer {
+    border: 2px solid transparent;
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.normalSize {
+    height: 100px;
+}
+
+.bigSize {
+    height: 200px;
+}
+
+.greenBorder {
+    border-color: green;
+}
+
+.grayBorder {
+    border-color: gray;
+}
