@@ -43,7 +43,7 @@ input,
 textarea {
     /* intervalo de tamanho */
     font-size: clamp(14px, 1.6rem, 2vw);
-    border-radius: 2.5rem;
+    border-radius: 1.5rem;
     padding: .8rem;
     /*. clamp = setar tamanho minimo, normal e máximo */
     /*. perceba que é o clamp somente de body,button, input e textare */

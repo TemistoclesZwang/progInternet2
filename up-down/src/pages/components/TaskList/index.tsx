@@ -31,16 +31,15 @@ export function TopicList({ topics }: TopicListProps) {
         }));
     };
 
-
-
     return (
         <>
             <div className="cardTopicList">
                 {topics.map((topic) => (
                     <div key={topic.id} className="card">
                         <div className='containerTxt'>
-                        <p className='descriptionTxt'>Descrição:{topic.description}</p>
-                        <p className='autorTxt'>Autor:{topic.autor}</p>
+                            <p className='descriptionTxt'>Descrição:<span className="boldTxt">{topic.description}</span></p>
+                            <p className='autorTxt'>Autor:{topic.autor.nome}</p>
+                            <p className='dataTxt'>Data:{topic.created_at.toLocaleString()}</p>
                         </div>
                         <ButtonUpDown
                             onUpClick={() => handleUpVote(topic.id)}
