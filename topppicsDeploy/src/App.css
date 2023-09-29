@@ -1,0 +1,15 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+
+.card {
+  padding: 2em;
+  background-color: var(--roxo);
+  border-radius: 1.5rem;
+  margin-top: 1.5rem;
+}
+
