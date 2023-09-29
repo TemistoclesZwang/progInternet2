@@ -1,10 +1,8 @@
-// import { useState } from 'react';
 import { Topic } from '../NewTopic';
 import { ButtonUpDown } from '../ButtonUpDown';
 import { TotalVotes } from '../TotalVotes';
 import './index.css'
 import { useState, useEffect } from 'react';
-import './index.css';
 
 
 export function TopicList() {
@@ -35,19 +33,16 @@ export function TopicList() {
         fetch('http://localhost:3000/topics')
             .then((response) => response.json())
             .then((data) => {
-                // console.log(data.topics);
-                
-                setTopics(data|| []); // Adicionamos uma verificação para caso topics seja undefined
+                setTopics(data|| []);
             })
             .catch((error) => {
                 console.error('Erro ao obter os tópicos:', error);
             });
-    }, []); // Executa apenas uma vez ao montar o componente
-
+    }, []); 
     return (
         <>
             <div className="cardTopicList">
-                {topics && topics.map((topic) => ( // Verificamos se topics existe antes de chamar map
+                {topics && topics.map((topic) => ( 
                     <div key={topic.id} className="card">
                         <div className="containerTxt">
                             <p className="descriptionTxt">

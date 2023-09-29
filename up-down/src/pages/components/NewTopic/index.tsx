@@ -62,13 +62,13 @@ export function NewTopic({ onAddTopic }: NewTopicProps) {
                 },
                 body: JSON.stringify(newTopic)
             })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Novo tópico criado:', data);
-            })
-            .catch(error => {
-                console.error('Erro ao criar novo tópico:', error);
-            });
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Novo tópico criado:', data);
+                })
+                .catch(error => {
+                    console.error('Erro ao criar novo tópico:', error);
+                });
 
             onAddTopic(newTopic);
             setAutor({ nome: '', cidade: '', pais: '' });
