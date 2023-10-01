@@ -1,6 +1,10 @@
+:root {
+    font-size: 62, 5%;
+}
+
 @media only screen and (max-width: 480px) {
     body {
-        font-size: 14px;
+        font-size: .8rem;
         background-color: rgb(163, 145, 145);
         margin: 0;
     }
@@ -18,11 +22,12 @@
         justify-content: center;
         background-color: rgb(245, 247, 255);
         flex-grow: 9;
-        
+
     }
 
     .player-container {
         display: flex;
+        border-radius: 1rem;
         align-items: center;
         justify-content: center;
         width: 20rem;
@@ -45,7 +50,7 @@
         width: 0;
         height: 0px;
         margin-left: .5rem;
-        transform: rotate(90deg); 
+        transform: rotate(90deg);
         border-left: 15px solid transparent;
         border-right: 15px solid transparent;
         border-bottom: 25px solid rgb(209, 209, 218);
@@ -53,6 +58,7 @@
 
     .sidebar {
         flex-grow: 1;
+        flex-wrap: wrap;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -72,14 +78,127 @@
         background-color: rgb(172, 172, 172);
         width: 3rem;
         height: 3rem;
+    }
+
+    .circle-txt,
+    .sair,
+    .perfil-line,
+    .perfil-txt{
+        display:none;
 
     }
+
 }
 
 @media only screen and (min-width: 481px) and (max-width: 900px) {
     body {
-        font-size: 16px;
+        font-size: 1rem;
+        margin: 0;
     }
+
+    main {
+        display: flex;
+        height: 100vh;
+        flex-direction: row;
+    }
+
+
+    .video {
+        display: flex;
+        order: 2;
+        align-items: center;
+        justify-content: center;
+        background-color: rgb(245, 247, 255);
+        flex-grow: 9;
+
+    }
+
+    .player-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 25rem;
+        height: 15rem;
+        border-radius: 1rem;
+        background-color: rgb(209, 209, 218);
+
+    }
+
+    .circle-player {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 100%;
+        width: 5rem;
+        height: 5rem;
+        background-color: rgb(128, 128, 128);
+    }
+
+    .play-triangle {
+        width: 0;
+        height: 0px;
+        margin-left: .5rem;
+        transform: rotate(90deg);
+        border-left: 15px solid transparent;
+        border-right: 15px solid transparent;
+        border-bottom: 25px solid rgb(209, 209, 218);
+    }
+
+    .sidebar {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        align-items: center;
+        flex-grow: 1;
+        order: 1;
+        background-color: rgb(192, 216, 255);
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
+    }
+
+    .perfil {
+        border-radius: 100%;
+        background-color: rgb(172, 172, 172);
+        width: 3.7rem;
+        height: 3.7rem;
+    }
+    .perfil-txt{
+        margin:0;
+        color: green;
+    }
+
+    .perfil-line{
+        margin: 0;
+        width: 100%;
+        height: 0.01rem;
+        background-color: rgb(141, 141, 141);
+    }
+
+    .circles {
+        border-radius: 100%;
+        background-color: rgb(234, 196, 255);
+        width: 3.7rem;
+        height: 3.7rem;
+    }
+    .circle-txt{
+        margin:0;
+        font-size: 1;
+        color: brown;
+        text-decoration: underline;
+    }
+
+
+    .sair {
+        width: 5rem;
+        height: 2rem;
+        border-radius: .5rem;
+        background-color: green;
+        color: white;
+        margin-top: 1rem;
+    }
+
+
+
 
 
 }
@@ -89,4 +208,6 @@
         font-size: 18px;
         background-color: rgb(101, 101, 101);
     }
+
+    
 }
