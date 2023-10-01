@@ -13,9 +13,42 @@
 
 
     .video {
-        background-color: antiquewhite;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: rgb(245, 247, 255);
         flex-grow: 9;
+        
+    }
 
+    .player-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 20rem;
+        height: 20rem;
+        background-color: rgb(209, 209, 218);
+
+    }
+
+    .circle-player {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 100%;
+        width: 5rem;
+        height: 5rem;
+        background-color: rgb(128, 128, 128);
+    }
+
+    .play-triangle {
+        width: 0;
+        height: 0px;
+        margin-left: .5rem;
+        transform: rotate(90deg); 
+        border-left: 15px solid transparent;
+        border-right: 15px solid transparent;
+        border-bottom: 25px solid rgb(209, 209, 218);
     }
 
     .sidebar {
@@ -23,54 +56,31 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        background-color: aqua;
+        background-color: rgb(192, 216, 255);
         padding: 15px;
     }
 
     .circles {
         border-radius: 100%;
-        background-color: rgb(63, 63, 63);
-        width: 50px;
-        height: 50px;
+        background-color: rgb(234, 196, 255);
+        width: 3rem;
+        height: 3rem;
     }
 
     .perfil {
         border-radius: 100%;
-        background-color: rgb(255, 255, 255);
-        width: 50px;
-        height: 50px;
+        background-color: rgb(172, 172, 172);
+        width: 3rem;
+        height: 3rem;
+
     }
 }
 
 @media only screen and (min-width: 481px) and (max-width: 900px) {
     body {
         font-size: 16px;
-        background-color: rgb(155, 155, 155);
     }
 
-    main {
-        display: flex;
-        height: 100vh;
-        flex-direction: row;
-    }
-
-
-    .video {
-        background-color: antiquewhite;
-        flex-grow: 9;
-
-    }
-
-    .sidebar {
-        flex-grow: 1;
-        
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        /* height: 100%; */
-        background-color: aqua;
-        padding: 15px;
-    }
 
 }
 
