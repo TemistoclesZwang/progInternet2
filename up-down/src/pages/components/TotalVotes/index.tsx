@@ -22,7 +22,7 @@ export function TotalVotes({ totalUp, totalDown }: TotalVotesProps) {
             {showVotes && (
                 <>
                     <p>Upvotes: {totalUp} Downvotes: {totalDown} Total: {totalVotes}</p>
-                    <div className="progressBar">
+                    <div className="barraDeVotos">
                         <div className="upBar" style={{ width: `${upPercentage}%` }}>
                             {totalUp}
                         </div>

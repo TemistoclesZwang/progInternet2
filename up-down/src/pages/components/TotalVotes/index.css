@@ -1,34 +1,29 @@
-.mostrarVotos{
+.mostrarVotos {
     background-color: var(--rosa);
+    margin-bottom: 1rem;
 }
-.progressBar {
+
+.barraDeVotos {
     position: relative;
-    height: 15px;
-    background-color: #f3f3f3;
-    border-radius: 5px;
-    margin-top: 10px;
+    height: 1.5rem;
+    border-radius: 1.5rem;
+    margin-top: 1.0rem;
 }
 
-.upBar {
-    position: absolute;
-    height: 100%;
-    background-color: var(--verde);
-    border-radius: 5px;
-    text-align: center;
-    /* line-height: 30px; */
-    color: white;
-    font-weight: bold;
-    left: 0;
-}
-
+.upBar,
 .downBar {
     position: absolute;
     height: 100%;
-    background-color: var(--vermelho);
-    border-radius: 5px;
+    border-radius: 0rem 10rem 0rem 10rem;
     text-align: center;
-    /* line-height: 30px; */
-    color: white;
-    font-weight: bold;
-    right: 0;
+    color: black;
 }
+
+.upBar {
+    background-color: var(--verde);
+    left: 0;
+}
+.downBar {
+        background-color: var(--vermelho);
+        right: 0;
+    }
