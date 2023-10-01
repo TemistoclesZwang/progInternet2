@@ -15,9 +15,8 @@ form{
     background-color: var(--rosa);
 }
 
-.descricao{
-    width: 25rem;
-    height: 15rem;
 
+.descricao{
+    height: 12rem;
 }
 

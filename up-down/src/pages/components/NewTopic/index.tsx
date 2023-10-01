@@ -23,7 +23,9 @@ export interface Topic {
 }
 
 export function NewTopic({ onAddTopic }: NewTopicProps) {
-    const [autor, setAutor] = useState<Autor>({ nome: '', cidade: '', pais: '' });
+    const [autor, setAutor] = useState<Autor>({ 
+        nome: '', cidade: '', pais: '' 
+    });
     const [description, setDescription] = useState('');
     const [tags, setTags] = useState('');
 
@@ -36,16 +38,29 @@ export function NewTopic({ onAddTopic }: NewTopicProps) {
             setAutor(prevAutor => ({ ...prevAutor, cidade: value }));
         } else if (name === 'pais') {
             setAutor(prevAutor => ({ ...prevAutor, pais: value }));
-        } else if (name === 'description') {
-            setDescription(value);
-        } else if (name === 'tags') {
+        } //else if (name === 'description') {
+            //setDescription(value);
+        //} 
+        else if (name === 'tags') {
             setTags(value);
         }
     }
 
+    const handleTextAreaChange = (e:React.ChangeEvent<HTMLTextAreaElement>) =>{
+        const text = e.target.value
+        console.log(text);
+        setDescription (text)
+        
+    }
+
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        if (autor.nome.trim() !== '' && autor.cidade.trim() !== '' && autor.pais.trim() !== '' && description.trim() !== '' && tags.trim() !== '') {
+        if (autor.nome.trim() !== '' &&
+            autor.cidade.trim() !== '' &&
+            autor.pais.trim() !== '' &&
+            description.trim() !== '' &&
+            tags.trim() !== '') {
+
             const newTopic: Topic = {
                 id: uuidv1(),
                 autor: autor,
@@ -108,13 +123,9 @@ export function NewTopic({ onAddTopic }: NewTopicProps) {
                     onChange={handleInputChange}
                     placeholder="Tags"
                 />
-                <input className="descricao"
-                    type="text"
-                    name="description"
-                    value={description}
-                    onChange={handleInputChange}
-                    placeholder="Descrição"
-                />
+                <textarea name="description" placeholder="Descrição" 
+                    className="descricao" value={description} onChange={handleTextAreaChange}>
+                </textarea>
                 <input className="adicionar" type="submit" value={"Adicionar"} />
             </form>
         </>
