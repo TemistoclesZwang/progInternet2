@@ -1,7 +1,6 @@
 import { useState } from "react";
 import './index.css'
-import { v1 as uuidv1 } from 'uuid';
-
+import './index.css'
 
 interface NewTopicProps {
     onAddTopic: (newTopic: Topic) => void;
@@ -38,10 +37,7 @@ export function NewTopic({ onAddTopic }: NewTopicProps) {
             setAutor(prevAutor => ({ ...prevAutor, cidade: value }));
         } else if (name === 'pais') {
             setAutor(prevAutor => ({ ...prevAutor, pais: value }));
-        } //else if (name === 'description') {
-            //setDescription(value);
-        //} 
-        else if (name === 'tags') {
+        } else if (name === 'tags') {
             setTags(value);
         }
     }
@@ -50,11 +46,11 @@ export function NewTopic({ onAddTopic }: NewTopicProps) {
         const text = e.target.value
         console.log(text);
         setDescription (text)
-        
     }
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
+        
         if (autor.nome.trim() !== '' &&
             autor.cidade.trim() !== '' &&
             autor.pais.trim() !== '' &&
@@ -62,28 +58,13 @@ export function NewTopic({ onAddTopic }: NewTopicProps) {
             tags.trim() !== '') {
 
             const newTopic: Topic = {
-                id: uuidv1(),
+                id: '', 
                 autor: autor,
                 description: description,
                 active: true,
                 created_at: new Date(),
                 tags: tags
             };
-
-            fetch('http://localhost:3000/topics', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(newTopic)
-            })
-                .then(response => response.json())
-                .then(data => {
-                    console.log('Novo tópico criado:', data);
-                })
-                .catch(error => {
-                    console.error('Erro ao criar novo tópico:', error);
-                });
 
             onAddTopic(newTopic);
             setAutor({ nome: '', cidade: '', pais: '' });
@@ -131,3 +112,5 @@ export function NewTopic({ onAddTopic }: NewTopicProps) {
         </>
     )
 }
+
+export default NewTopic;
