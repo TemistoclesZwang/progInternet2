@@ -116,7 +116,7 @@ p {
 
 .image-two {
     height: 20rem;
-    width: 30rem;
+    width: 15rem;
     background-color: rgb(29, 123, 62);
 }
 
@@ -270,6 +270,12 @@ p {
         /* background-color: rgb(210, 255, 239); */
 
     }
+    .image-two {
+        height: 20rem;
+        width: 55rem;
+        background-color: rgb(29, 123, 62);
+    }
+    
 
     .container-three,
     .container-four {
