@@ -3,6 +3,7 @@
     gap: 1rem;
     justify-content: center;
     margin-bottom: 1.5rem;
+    margin-top: 2.5rem;
 }
 .upButton{
     background-color: var(--verde);
