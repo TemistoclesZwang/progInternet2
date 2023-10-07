@@ -1,0 +1,281 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 62, 5%;
+}
+.secao {
+    margin-left: 2rem;
+}
+p {
+    color: aliceblue;
+
+}
+
+.first,
+.two,
+.three,
+.four {
+    padding-top: 5rem;
+    height: 50rem;
+    width: 100vw;
+    background-color: rgb(37, 115, 97);
+}
+
+
+
+.four {
+    height: 60rem;
+}
+
+.bar {
+    position: fixed;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: aquamarine;
+    flex-direction: row;
+    width: 100%;
+    margin-top: -5rem;
+    /* height: 10%; */
+    /* padding: 1rem; */
+}
+
+.txt-bar {
+    display: none;
+}
+
+.left,
+.right {
+    display: flex;
+    gap: 2rem;
+    margin: .5rem;
+    /* align-items: center; */
+    /* flex-direction: row; */
+    /* height: 50%; */
+}
+
+.riot-mark,
+.icon1,
+.icon2,
+.icon3 {
+    background-color: rgb(34, 53, 53);
+    width: 3rem;
+    height: 3rem;
+}
+
+.icon1,
+.icon2,
+.icon3 {
+    border-radius: 3rem;
+}
+
+.conteudo-container {
+    margin-top: 5rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    /* width: 5rem; */
+    height: 15rem;
+    /* background-color: rgb(210, 255, 239); */
+
+}
+
+.botao-principal {
+    border-radius: 2rem;
+    width: 15rem;
+    height: 5rem;
+    background-color: rgb(21, 39, 33);
+}
+
+.textos-principais {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* gap: 8rem; */
+}
+
+.titulo-principal {
+    color: aliceblue;
+    /* margin-left: 1rem; */
+}
+
+.two {
+    background-color: rgb(57, 96, 87);
+
+}
+
+.text-imagem-two,
+.image-two {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.image-two {
+    height: 20rem;
+    width: 30rem;
+    background-color: rgb(29, 123, 62);
+}
+
+.container-three,
+.container-four {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+.content-1,
+.content-2,
+.content-3,
+.content-4 {
+    background-color: #254f41;
+    /* Adicione uma cor de fundo para melhor visualização */
+    padding: 2rem;
+}
+
+.text-img-three,
+.text-img-four {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.img-three {
+    width: 10rem;
+    height: 6rem;
+    /* Adapte o tamanho conforme necessário */
+    background-color: #0c941c;
+    /* Adicione uma cor de fundo para a imagem */
+}
+
+.img-four {
+    width: 100%;
+    height: 15rem;
+    background-color: #69e077;
+    border-radius: 2rem;
+    margin: 0 auto;
+
+}
+
+/* Adicionando um container ao redor dos elementos */
+.container-five {
+    display: flex;
+    overflow-x: auto;
+    /* Permitindo a rolagem horizontal */
+    scroll-snap-type: x mandatory;
+    width: 100%;
+}
+
+/* Estilizando cada conteúdo individual */
+.content-1-five,
+.content-2-five,
+.content-3-five,
+.content-4-five {
+    flex: 0 0 100%;
+    /* Definindo a largura de cada conteúdo */
+    scroll-snap-align: start;
+    /* Alinhando cada conteúdo ao início do viewport */
+}
+
+/* Restante do seu CSS para .content-1, .content-2, .content-3, .content-4 */
+
+/* Opcional: Adicionando uma barra de navegação */
+.nav-bar {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.nav-button {
+    width: 10px;
+    height: 10px;
+    margin: 0 5px;
+    background-color: #f1eded;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* Adicionando classes específicas para a navegação */
+.nav-button:nth-child(1) {
+    scroll-snap-align: start;
+}
+
+.nav-button:nth-child(2) {
+    scroll-snap-align: start;
+}
+
+.nav-button:nth-child(3) {
+    scroll-snap-align: start;
+}
+
+.nav-button:nth-child(4) {
+    scroll-snap-align: start;
+}
+
+
+
+
+@media screen and (min-width: 768px) {
+
+    .first{
+        height: 30rem;
+        background-color: rgb(22, 121, 139);
+    }
+
+    .two{
+        height: 30rem;
+        background-color: rgb(115, 178, 189);
+    }
+    .three {
+        height: 25rem;
+    }
+
+    .txt-bar {
+        display: flex;
+        align-items: center;
+    }
+
+    .riot-mark,
+    .icon1,
+    .icon2,
+    .icon3 {
+        background-color: rgb(87, 180, 180);
+        width: 3rem;
+        height: 3rem;
+    }
+
+    .icon1,
+    .icon2,
+    .icon3 {
+        border-radius: .5rem;
+        width: 3rem;
+        height: 1rem;
+
+    }
+
+    .left,
+    .right {
+        display: flex;
+        gap: 2rem;
+        margin: .5rem;
+        align-items: center;
+    }
+
+    .conteudo-container {
+        align-items: flex-start;
+        margin-left: 2rem;
+        /* background-color: rgb(210, 255, 239); */
+
+    }
+
+    .container-three,
+    .container-four {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        /* Agora são duas colunas */
+        gap: 1rem;
+    }
+}
