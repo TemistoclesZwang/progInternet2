@@ -1,5 +1,5 @@
 
-import { Topic } from '../pages/components/NewTopic'
+import { Topic } from '../components/NewTopic'
 import { v1 as uuidv1 } from 'uuid';
 
 

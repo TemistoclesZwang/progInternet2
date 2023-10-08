@@ -1,7 +1,7 @@
 import React, { useEffect, useReducer } from 'react';
 import './App.css';
-import { NewTopic, Topic } from './pages/components/NewTopic';
-import { TopicList } from './pages/components/TaskList';
+import { NewTopic, Topic } from './components/NewTopic';
+import { TopicList } from './components/TopicList';
 import { ActionType, TopicReducer } from './reducers/topicReducer';
 import { fetchTopics, addTopic } from './services/api';
 
