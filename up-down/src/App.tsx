@@ -1,8 +1,8 @@
 import React, { useEffect, useReducer } from 'react';
 import './App.css';
 import { NewTopic, Topic } from './components/NewTopic';
-import { TopicList } from './components/TopicList';
-import { ActionType, TopicReducer } from './reducers/topicReducer';
+import { TopicListWithReducer } from './components/TopicList';
+import { ActionType, TopicReducer } from './reducers/TopicReducer';
 import { fetchTopics, addTopic } from './services/api';
 
 function App() {
@@ -32,7 +32,7 @@ function App() {
         <main className='container'>
             <h1>Lista de Tópicos</h1>
             <NewTopic onAddTopic={handleAddTopic} />
-            <TopicList />
+            <TopicListWithReducer />
         </main>
     );
 }
