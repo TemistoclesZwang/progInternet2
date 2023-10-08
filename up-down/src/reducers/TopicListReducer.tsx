@@ -1,4 +1,4 @@
-import { Topic } from "../pages/components/NewTopic"
+import { Topic } from "../components/NewTopic"
 
 interface TopicState {
     topics: Topic[]
