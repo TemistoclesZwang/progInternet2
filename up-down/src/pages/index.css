@@ -1,0 +1,16 @@
+#root {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+  }
+  
+  .container > h1{
+    margin-bottom: 2rem;
+    color: rgb(247, 193, 255);
+    font-family:'Franklin Gothic Medium';
+    font-style: italic;
+    font-size: 5rem;
+  
+  }
+  
