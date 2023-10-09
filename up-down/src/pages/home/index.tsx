@@ -1,9 +1,9 @@
 import React, { useEffect, useReducer } from 'react';
 import './index.css';
-import { NewTopic, Topic } from '../components/NewTopic';
-import { TopicListWithReducer } from '../components/TopicList';
-import { ActionType, TopicReducer } from '../reducers/TopicListReducer';
-import { fetchTopics, addTopic } from '../services/api';
+import { NewTopic, Topic } from '../../components/NewTopic';
+import { TopicListWithReducer } from '../../components/TopicList';
+import { ActionType, TopicReducer } from '../../reducers/TopicListReducer';
+import { fetchTopics, addTopic } from '../../services/api';
 
 
 export function IndexPage() {
