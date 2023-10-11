@@ -44,7 +44,6 @@ export function NewTopic({ onAddTopic }: NewTopicProps) {
 
     const handleTextAreaChange = (e:React.ChangeEvent<HTMLTextAreaElement>) =>{
         const text = e.target.value
-        console.log(text);
         setDescription (text)
     }
 

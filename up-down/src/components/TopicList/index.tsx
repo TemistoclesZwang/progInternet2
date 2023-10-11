@@ -41,7 +41,6 @@ export function TopicListWithReducer() {
 
     return (
         <TopicListProvider>
-
                 <div className="cardTopicList">
                     {estados.topics && estados.topics.map((topic) => (
                         <div key={topic.id} className="card">
