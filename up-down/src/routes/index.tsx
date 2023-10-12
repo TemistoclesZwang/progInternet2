@@ -1,11 +1,11 @@
 import React from 'react';
-import { createBrowserRouter } from 'react-router-dom';
+import { createBrowserRouter, Routes, Route } from 'react-router-dom';
 import { Topics } from '../pages/topics';
 import { LoginForm } from '../pages/login';
 import { NotFound } from '../pages/NotFound';
 import { About } from '../pages/about';
 
-export const MyRouter = createBrowserRouter([
+const routerConfig = [
     {
         path:'/topics',
         element:<Topics/>
@@ -22,6 +22,14 @@ export const MyRouter = createBrowserRouter([
         path:'*',
         element:<NotFound/>
     },
-]);
+];
 
-
+export const MyRouter = {
+    element: (
+        <Routes>
+            {routerConfig.map(({ path, element }) => (
+                <Route key={path} path={path} element={element} />
+            ))}
+            </Routes>
+    )
+};

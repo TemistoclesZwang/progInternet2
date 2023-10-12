@@ -19,7 +19,7 @@ export function TopicListWithReducer() {
             .then((response) => response.json())
             .then((data) => {
                 dispatch({
-                    type: ActionType.LOADED, payload: {
+                    type: ActionType.LOADED_TOPICS_API, payload: {
                         topics: data.reverse() || []
                     }
                 });
@@ -62,7 +62,8 @@ export function TopicListWithReducer() {
                                 onDownClick={() => handleDownVote(topic.id)}
                             />
                             {estados.votes[topic.id] && (
-                                <TotalVotes totalUp={estados.votes[topic.id].up} totalDown={estados.votes[topic.id].down} />
+                                <TotalVotes totalUp={estados.votes[topic.id].up} 
+                                    totalDown={estados.votes[topic.id].down} />
                             )}
                         </div>
                     ))}

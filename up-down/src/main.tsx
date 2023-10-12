@@ -9,6 +9,6 @@ import { MyRouter } from './routes/index.tsx';
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <App />
-    <RouterProvider router={MyRouter} />
-  </React.StrictMode>,
+    {/* <RouterProvider router={MyRouter} /> */}
+  </React.StrictMode>
 )
