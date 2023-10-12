@@ -6,10 +6,10 @@ export interface TopicState {
     votes: { [id: string]: { up: number; down: number } }
 }
 
-export enum ActionType { ADDED_TOPIC, LOADED, UP_VOTE, DOWN_VOTE }
+export enum ActionType { ADDED_TOPIC, LOADED_TOPICS_API, UP_VOTE, DOWN_VOTE }
 
 type ActionAddedTopic = { type: ActionType.ADDED_TOPIC, payload: { topic: Topic } }
-type ActionLoaded = { type: ActionType.LOADED, payload: { topics: Topic[] } }
+type ActionLoaded = { type: ActionType.LOADED_TOPICS_API, payload: { topics: Topic[] } }
 type ActionUpVote = { type: ActionType.UP_VOTE, payload: { id: string } }
 type ActionDownVote = { type: ActionType.DOWN_VOTE, payload: { id: string } }
 
@@ -24,7 +24,7 @@ export function reducerFunction(state: TopicState, action: Action): TopicState {
                 topics: [newTopic, ...state.topics],
             };
         }
-        case ActionType.LOADED: {
+        case ActionType.LOADED_TOPICS_API: {
             const topics = action.payload.topics || [];
             return {
                 ...state,
