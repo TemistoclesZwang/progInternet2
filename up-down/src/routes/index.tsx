@@ -1,35 +1,42 @@
 import React from 'react';
-import { createBrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { Topics } from '../pages/topics';
-import { LoginForm } from '../pages/login';
 import { NotFound } from '../pages/NotFound';
 import { About } from '../pages/about';
+import { LoginPage } from '../pages/login';
+import { AuthProvider, useAuth } from '../context/AuthContext';
 
-const routerConfig = [
-    {
-        path:'/topics',
-        element:<Topics/>
-    },
-    {
-        path:'/login',
-        element:<LoginForm/>
-    },
-    {
-        path:'/about',
-        element:<About/>
-    },
-    {
-        path:'*',
-        element:<NotFound/>
-    },
-];
+const PrivateRoute = ({ children }:{children:React.ReactNode}) => {
+    const { isAuthenticated } = useAuth();
 
-export const MyRouter = {
-    element: (
-        <Routes>
-            {routerConfig.map(({ path, element }) => (
-                <Route key={path} path={path} element={element} />
-            ))}
-            </Routes>
-    )
+    if (isAuthenticated) {
+        return <>{children}</>;
+    } else {
+        return <Navigate to="/login" />;
+    }
 };
+
+export const MyRouter = (
+    <AuthProvider>
+        <Routes>
+            <Route path="/login" element={<LoginPage />} />
+            <Route
+                path="/about/*"
+                element={
+                    <PrivateRoute>
+                        <About />
+                    </PrivateRoute>
+                }
+            />
+            <Route
+                path="/topics/*"
+                element={
+                    <PrivateRoute>
+                        <Topics />
+                    </PrivateRoute>
+                }
+            />
+            <Route path="*" element={<NotFound />} />
+        </Routes>
+    </AuthProvider>
+);

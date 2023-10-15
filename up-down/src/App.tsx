@@ -1,8 +1,6 @@
 import './App.css';
-import { BrowserRouter, Routes, Link } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import { MyRouter } from './routes';
-import { About } from './pages/about';
-import { createAuthContext } from './context/AuthContext';
 
 function App() {
     return (
@@ -14,12 +12,9 @@ function App() {
                     <li><Link to="/about">About</Link></li>
                 </ul>
             </nav>
-            <createAuthContext></createAuthContext>
-            {MyRouter.element}
-            {createAuthContext}
+            {MyRouter}
         </BrowserRouter>
     );
 }
 
 export default App;
-
